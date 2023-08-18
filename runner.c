@@ -9,7 +9,6 @@ int main (int argc, char ** argv) {
         strcat(args, " ");
 
     }
-    printf("%s\n", args);
     char * run = "python3 main.py ";
     char * command = malloc(strlen(run) + sizeof(args));
     strcat(command, run);

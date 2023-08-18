@@ -30,6 +30,16 @@ def find_changed() -> list:
 def refresh_pairs(pairs: list) -> None:
     for pair in pairs:
         shutil.copy(pair['src'], pair['dst'])
+        
+    
+def clear_file_pairs_file() -> None:
+    content = json.load(open("file_pairs.json"))
+    for _ in content['pairs']:
+        content['pairs'].pop()
+
+    open("file_pairs.json", "w").write(
+        json.dumps(content, indent=4)
+    )
 
 def main():
     argc = len(sys.argv)
@@ -60,6 +70,8 @@ def main():
                         return
 
                     refresh_pairs(to_refresh)
+                case "-clear":
+                    clear_file_pairs_file()
 
 if __name__ == "__main__":
     main()
