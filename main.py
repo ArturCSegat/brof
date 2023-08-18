@@ -1,45 +1,5 @@
 import sys
-import shutil
-import json
-
-def add_pair_to_store(src: str, dst: str) -> None:
-    pair = {"src": src, "dst": dst}
-    with open("file_pairs.json", "r+") as fjs:
-        content = json.load(fjs)
-        content["pairs"].append(pair)
-        fjs.seek(0)
-        json.dump(content, fjs, indent=4)
-
-def find_changed() -> list:
-    changed_pairs = []
-    with open("file_pairs.json", "r+") as fjs:
-        for pair in json.load(fjs)["pairs"]:
-            import difflib
-
-            with open(pair['src']) as src:
-                src_cont = src.readlines()
-
-            with open(pair['dst']) as dst:
-                dst_cont = dst.readlines()
-
-            if len(list(difflib.unified_diff(src_cont, dst_cont))) != 0:
-                changed_pairs.append(pair)
-
-    return changed_pairs
-
-def refresh_pairs(pairs: list) -> None:
-    for pair in pairs:
-        shutil.copy(pair['src'], pair['dst'])
-        
-    
-def clear_file_pairs_file() -> None:
-    content = json.load(open("file_pairs.json"))
-    for _ in content['pairs']:
-        content['pairs'].pop()
-
-    open("file_pairs.json", "w").write(
-        json.dumps(content, indent=4)
-    )
+import command_funcs
 
 def main():
     argc = len(sys.argv)
@@ -59,9 +19,9 @@ def main():
                 case "-add":
                     src = sys.argv[first_file_idx]
                     dst = sys.argv[first_file_idx + 1]
-                    add_pair_to_store(src, dst)
+                    command_funcs.add_pair_to_store(src, dst)
                 case "-refresh":
-                    to_refresh = find_changed()
+                    to_refresh = command_funcs.find_changed()
                     print("Pairs to be updated: ")
                     print(to_refresh)
                     yn = input("Do you want to refresh? y/n: ")
@@ -69,9 +29,9 @@ def main():
                     if yn.lower == "n":
                         return
 
-                    refresh_pairs(to_refresh)
+                    command_funcs.refresh_pairs(to_refresh)
                 case "-clear":
-                    clear_file_pairs_file()
+                    command_funcs.clear_file_pairs_file()
 
 if __name__ == "__main__":
     main()
