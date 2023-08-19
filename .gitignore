@@ -1,1 +1,5 @@
 *.txt
+test_folder
+test_folder2
+__pycache__
+brof

@@ -32,6 +32,12 @@ def main():
                     command_funcs.refresh_pairs(to_refresh)
                 case "-clear":
                     command_funcs.clear_file_pairs_file()
+                case "-dir":
+                    src = sys.argv[first_file_idx]
+                    dst = sys.argv[first_file_idx + 1]
+                    command_funcs.add_folders(src, dst)
+                case _:
+                    raise Exception("no mode added, please add a mode, -add, -refresh, -clear. -dir")
 
 if __name__ == "__main__":
     main()
