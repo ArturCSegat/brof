@@ -42,8 +42,12 @@ def main():
                     src = sys.argv[first_file_idx]
                     dst = sys.argv[first_file_idx + 1]
                     command_funcs.add_folders(src, dst)
+                case "-show":
+                    command_funcs.show_pairs()
                 case _:
-                    raise Exception("no mode added, please add a mode, -add, -refresh, -clear. -dir")
+                    print(f"the mode you entered '{opt}' is not valid, please add a valid mode, -add, -refresh, -clear. -dir, -show")
+    else:
+        print(f"you did not enter a mode, please enter a mode, -add, -refresh, -clear. -dir, -show")
 
 if __name__ == "__main__":
     main()

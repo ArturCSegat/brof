@@ -42,7 +42,7 @@ def clear_file_pairs_file() -> None:
     content['pairs'] = []
     open("file_pairs.json", "w").write(json.dumps(content, indent=4))
 
-def remove_sub_folders(folder: str, crr_list=[]) -> list[str]:
+def remove_sub_folders(folder: str, crr_list: list[str]=[]) -> list[str]:
     content = os.listdir(folder)
 
     for p in content:
@@ -63,3 +63,7 @@ def add_folders(f1: str, f2:str) -> None:
 
     for i in range(0, len(content1)):
         add_pair_to_store(content1[i], content2[i])
+
+def show_pairs() -> None:
+    with open("file_pairs.json", "r") as fjs:
+        print(fjs.read())
