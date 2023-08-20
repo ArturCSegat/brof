@@ -30,10 +30,12 @@ def find_changed() -> list[pair]:
 
     return changed_pairs
 
+def refresh_pair(pair: pair) -> None:
+    shutil.copy(pair['src'], pair['dst'])
+
 def refresh_pairs(pairs: list[pair]) -> None:
     for pair in pairs:
-        shutil.copy(pair['src'], pair['dst'])
-        
+        refresh_pair(pair)
     
 def clear_file_pairs_file() -> None:
     content = json.load(open("file_pairs.json"))

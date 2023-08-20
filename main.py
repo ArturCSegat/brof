@@ -24,12 +24,18 @@ def main():
                     to_refresh = command_funcs.find_changed()
                     print("Pairs to be updated: ")
                     print(to_refresh)
-                    yn = input("Do you want to refresh? y/n: ")
-
-                    if yn.lower == "n":
-                        return
-
-                    command_funcs.refresh_pairs(to_refresh)
+                    
+                    for pair in to_refresh:
+                        io = input(f" do you want refresh pair: {pair}? y/n or a for refreshing all pairs")
+                        match io:
+                            case "y":
+                                command_funcs.refresh_pair(pair)
+                            case "n":
+                                continue
+                            case "a":
+                                command_funcs.refresh_pairs(to_refresh)
+                                break
+                    
                 case "-clear":
                     command_funcs.clear_file_pairs_file()
                 case "-dir":
