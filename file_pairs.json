@@ -1,3 +1,8 @@
 {
-    "pairs": []
+    "pairs": [
+        {
+            "src": "test1.txt",
+            "dst": "test2.txt"
+        }
+    ]
 }
