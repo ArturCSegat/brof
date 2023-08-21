@@ -2,14 +2,11 @@ import argparse
 import command_funcs
 
 parser = argparse.ArgumentParser(description="CLI tool for keeping changes to a file updated in different locations")
-# parser.add_argument("action", type=str, choices=["add", "refresh", "dir", "show", "clear"], help="File action")
-# parser.add_argument("src", type=str, nargs="?", help="Source path")
-# parser.add_argument("dst", type=str, nargs="?", help="Destination path")
-parser.add_argument("-add", dest="add", nargs=2, help="Add a pair of files")
-parser.add_argument("-refresh", dest="refresh", action="store_true", help="Refresh current pairs to update changes")
-parser.add_argument("-dir", dest="dir", nargs=2, help="Add a pair of directories")
-parser.add_argument("-show", dest="show", action="store_true", help="Show the pairs of the current workspace")
-parser.add_argument("-clear", dest="clear", action="store_true", help="Clear all the pairs from the current workspace")
+parser.add_argument("-add", "-a", dest="add", nargs=2, help="Add a pair of files")
+parser.add_argument("-refresh", "-r", dest="refresh", action="store_true", help="Refresh current pairs to update changes")
+parser.add_argument("-dir", "-d", dest="dir", nargs=2, help="Add a pair of directories")
+parser.add_argument("-show", "-s", dest="show", action="store_true", help="Show the pairs of the current workspace")
+parser.add_argument("-clear", "-c", dest="clear", action="store_true", help="Clear all the pairs from the current workspace")
 
 def main():
     args = parser.parse_args()
