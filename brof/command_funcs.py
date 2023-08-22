@@ -4,14 +4,17 @@ from typing import NewType
 import os
 
 pair = NewType("pair", dict[str, str])
-file_path = "./brof_files/file_pairs.json"
+
+dir = os.path.dirname(os.path.realpath(__file__))
+file_path = dir + "/brof_files/file_pairs.json"
 
 def setup_file(path: str):
     
     if os.path.isfile(path):
         return 
 
-    os.mkdir("./brof_files")
+    print(dir + "/brof_files/")
+    os.mkdir(dir + "/brof_files/")
 
     with open(path, "w+") as f:
         f.write('{"pairs": []}')

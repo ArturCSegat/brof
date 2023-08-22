@@ -26,7 +26,7 @@ def main():
                 cf.refresh_pairs(to_refresh)
                 break
     elif args.dir:
-        cf.add_pair_to_store(args.dir[0], args.dir[1])   
+        cf.add_folders(args.dir[0], args.dir[1])   
     elif args.show:
         cf.show_pairs()
     elif args.clear:
