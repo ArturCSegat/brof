@@ -17,7 +17,7 @@ int main (int argc, char ** argv) {
         strcat(args, " ");
 
     }
-    char run[] = "python3 main.py ";
+    char run[] = "python3 ./brof/__main__.py ";
     char command[strlen(run) + strlen(args) + 10];
     strcat(command, run);
     strcat(command, args);
