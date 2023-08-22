@@ -8,10 +8,10 @@ file_path = "./brof_files/file_pairs.json"
 
 def setup_file(path: str):
     
-    ##  the dir is created in setup.py
-
     if os.path.isfile(path):
         return 
+
+    os.mkdir("./brof_files")
 
     with open(path, "w+") as f:
         f.write('{"pairs": []}')

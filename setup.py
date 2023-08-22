@@ -4,13 +4,13 @@ import os
 setup(
     name = 'brof',
     packages = ['brof'],   
-    version = '0.13',     
+    version = '0.3001',     
     license='MIT',        
     description = 'A CLI tool for keeping a file up to date with its copies in different locations',
     author = 'Artur C Segat',
     author_email = 'arturcamerasegat@gmail.com',
     url = 'https://github.com/ArturCSegat/brof',
-    download_url = 'https://github.com/ArturCSegat/brof/archive/refs/tags/0.13.tar.gz',
+    download_url = 'https://github.com/ArturCSegat/brof/archive/refs/tags/0.3.tar.gz',
     keywords = ['file', 'file management', 'CLI', 'tool'],
     install_requires=[],
     classifiers=[
@@ -24,5 +24,3 @@ setup(
         'Programming Language :: Python :: 3.11',
     ],
 )
-
-os.mkdir("./brof-files")

@@ -1,5 +1,5 @@
 import argparse
-import command_funcs as cf
+import brof.command_funcs as cf
 
 parser = argparse.ArgumentParser(description="CLI tool for keeping changes to a file updated in different locations")
 parser.add_argument("-add", "-a", dest="add", nargs=2, help="Add a pair of files")
