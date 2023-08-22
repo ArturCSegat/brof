@@ -8,7 +8,7 @@ setup(
     author = 'Artur C Segat',
     author_email = 'arturcamerasegat@gmail.com',
     url = 'https://github.com/ArturCSegat/brof',
-    download_url = 'https://github.com/ArturCSegat/brof/archive/refs/tags/0.1.tar.gz',
+    download_url = 'https://github.com/ArturCSegat/brof/archive/refs/tags/0.11.tar.gz',
     keywords = ['file', 'file management', 'CLI', 'tool'],
     install_requires=[],
     classifiers=[
