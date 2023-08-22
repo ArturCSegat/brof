@@ -4,9 +4,6 @@ CLI utility for automagically updating a file if its brother is modified, useful
 ## Install 
 
 `pip install brof`
-### Problem
-
-Currently you need to create a file_pairs.json file in the directory you want to use this, so its nor really useful, windows fix coming soon
 
 ## Usage
 
