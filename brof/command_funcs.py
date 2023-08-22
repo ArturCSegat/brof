@@ -4,19 +4,17 @@ from typing import NewType
 import os
 
 pair = NewType("pair", dict[str, str])
-file_path = "/var/brof/file_pairs.json"
+file_path = "./brof_files/file_pairs.json"
 
 def setup_file(path: str):
     
+    ##  the dir is created in setup.py
+
     if os.path.isfile(path):
-        return
+        return 
 
-    with open(path, "w") as f:
-        content = json.load(f)
-        content.append({"pairs": []})
-        f.seek(0)
-        json.dump(content, f, indent=4)
-
+    with open(path, "w+") as f:
+        f.write('{"pairs": []}')
 
 def add_pair_to_store(src: str, dst: str) -> None:
     pair = {"src": src, "dst": dst}

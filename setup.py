@@ -1,4 +1,6 @@
 from distutils.core import setup
+import os
+
 setup(
     name = 'brof',
     packages = ['brof'],   
@@ -22,3 +24,5 @@ setup(
         'Programming Language :: Python :: 3.11',
     ],
 )
+
+os.mkdir("./brof-files")

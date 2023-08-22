@@ -1,5 +1,5 @@
 import argparse
-import brof.command_funcs
+import command_funcs as cf
 
 parser = argparse.ArgumentParser(description="CLI tool for keeping changes to a file updated in different locations")
 parser.add_argument("-add", "-a", dest="add", nargs=2, help="Add a pair of files")
@@ -12,25 +12,25 @@ def main():
     args = parser.parse_args()
 
     if args.add:
-        brof.command_funcs.add_pair_to_store(args.add[0], args.add[1])   
+        cf.add_pair_to_store(args.add[0], args.add[1])   
     elif args.refresh:
-        to_refresh = brof.command_funcs.find_changed()
+        to_refresh = cf.find_changed()
         print("Pairs to be updated:")
         print(to_refresh)
 
         for pair in to_refresh:
             io = input(f"Do you want to refresh pair: {pair}? y/n or a for refreshing all pairs ")
             if io == "y":
-                brof.command_funcs.refresh_pair(pair)
+                cf.refresh_pair(pair)
             elif io == "a":
-                brof.command_funcs.refresh_pairs(to_refresh)
+                cf.refresh_pairs(to_refresh)
                 break
     elif args.dir:
-        brof.command_funcs.add_pair_to_store(args.dir[0], args.dir[1])   
+        cf.add_pair_to_store(args.dir[0], args.dir[1])   
     elif args.show:
-        brof.command_funcs.show_pairs()
+        cf.show_pairs()
     elif args.clear:
-        brof.command_funcs.clear_file_pairs_file()
+        cf.clear_file_pairs_file()
 
 if __name__ == "__main__":
     main()
