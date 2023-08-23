@@ -3,6 +3,7 @@ import brof.command_funcs as cf
 
 parser = argparse.ArgumentParser(description="CLI tool for keeping changes to a file updated in different locations")
 parser.add_argument("-add", "-a", dest="add", nargs=2, help="Add a pair of files")
+parser.add_argument("-remove", "-rm", dest="remove", nargs=2, help="Remove a pair of files")
 parser.add_argument("-refresh", "-r", dest="refresh", action="store_true", help="Refresh current pairs to update changes")
 parser.add_argument("-dir", "-d", dest="dir", nargs=2, help="Add a pair of directories")
 parser.add_argument("-show", "-s", dest="show", action="store_true", help="Show the pairs of the current workspace")
@@ -13,6 +14,8 @@ def main():
 
     if args.add:
         cf.add_pair_to_store(args.add[0], args.add[1])   
+    elif args.remove:
+        cf.remove_pair(args.remove[0], args.remove[1])   
     elif args.refresh:
         to_refresh = cf.find_changed()
         print("Pairs to be updated:")

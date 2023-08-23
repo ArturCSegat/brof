@@ -92,3 +92,13 @@ def show_pairs() -> None:
 
     with open(file_path, "r") as fjs:
         print(fjs.read())
+
+def remove_pair(src: str, dst: str) -> None:
+    with open(file_path, "r+") as fjs:
+        content = json.load(fjs)
+        for idx, pair in enumerate(content["pairs"]):
+            if pair["src"] == src and pair["dst"] == dst:
+                del content["pairs"][idx]
+                with open(file_path, "w") as fw:
+                    fw.write(json.dumps(content, indent=4))
+                return
