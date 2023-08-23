@@ -20,7 +20,7 @@ def setup_file(path: str):
         f.write('{"pairs": []}')
 
 def add_pair_to_store(src: str, dst: str) -> None:
-    pair = {"src": src, "dst": dst}
+    pair = {"src": os.path.abspath(src), "dst": os.path.abspath(dst)}
     
     setup_file(file_path)
 
