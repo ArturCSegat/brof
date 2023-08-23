@@ -81,10 +81,43 @@ def add_folders(f1: str, f2:str) -> None:
     content1 = remove_sub_folders(f1, a)
     b = []
     content2 = remove_sub_folders(f2, b)
-    print(content1)
+    files1 = [item for item in content1]
+    files2 = [item for item in content2]
+    
+    for idx, file in enumerate(files1):
+        arr = file.split("/")
+        for i, part in enumerate(arr):
+            if part == f1:
+                for j in range(0, i+1):
+                    arr.pop(j)
+                    break
+        files1[idx] = "/".join(arr)
 
-    for i in range(0, len(content1)):
-        add_pair_to_store(content1[i], content2[i])
+    for idx, file in enumerate(files2):
+        arr = file.split("/")
+        for i, part in enumerate(arr):
+            if part == f2:
+                for j in range(0, i+1):
+                    arr.pop(j)
+        files2[idx] = "/".join(arr)
+    
+    print(content1)
+    print(content2)
+    print(files1)
+    print(files2)
+
+    big = max(files1, files2, key=lambda x: len(x))
+    for file in big:
+        try:
+            src = content1[files1.index(file)]
+        except:
+            continue
+        try:
+            dst = content2[files2.index(file)]
+        except:
+            print("a")
+            continue
+        add_pair_to_store(src, dst)
 
 def show_pairs() -> None:
 
