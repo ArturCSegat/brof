@@ -81,26 +81,19 @@ def add_folders(f1: str, f2:str) -> None:
     content1 = remove_sub_folders(f1, a)
     b = []
     content2 = remove_sub_folders(f2, b)
-    files1 = [item for item in content1]
-    files2 = [item for item in content2]
-    
-    for idx, file in enumerate(files1):
+
+    def relativize_file(file: str, folder: str) -> str:
         arr = file.split("/")
         for i, part in enumerate(arr):
-            if part == f1:
+            if part == folder:
                 for j in range(0, i+1):
                     arr.pop(j)
                     break
-        files1[idx] = "/".join(arr)
+        return "/".join(arr)
 
-    for idx, file in enumerate(files2):
-        arr = file.split("/")
-        for i, part in enumerate(arr):
-            if part == f2:
-                for j in range(0, i+1):
-                    arr.pop(j)
-        files2[idx] = "/".join(arr)
-    
+    files1 = [relativize_file(file, f1) for file in content1]
+    files2 = [relativize_file(file, f2) for file in content2]
+
     print(content1)
     print(content2)
     print(files1)
