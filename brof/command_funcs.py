@@ -128,3 +128,16 @@ def remove_pair(src: str, dst: str) -> None:
                 with open(file_path, "w") as fw:
                     fw.write(json.dumps(content, indent=4))
                 return
+
+def get_pairs() -> list[pair]:
+    with open(file_path, "r+") as fjs:
+        content = json.load(fjs)
+        return content["pairs"]
+
+def has_pair(src: str, dst:str) -> bool:
+    print(get_pairs())
+    for p in get_pairs():
+        if p["src"] == os.path.abspath(src) and p["dst"] == os.path.abspath(dst):
+            return True
+    return False
+
