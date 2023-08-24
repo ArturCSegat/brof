@@ -11,11 +11,15 @@ CLI utility for automagically updating a file if its brother is modified, useful
 
 `python -m brof -show`
 
+### Remove a single pair/brothers
+
+`python -m brof -remove foo.txt bar.txt`
+
 ### Delete all pairs/brothers
 
 `python -m brof -clear`
 
-### Add a new pair/brother
+### Add a new pair/brothers
 
 `python -m brof -add foo.txt bar.txt`
 
