@@ -21,8 +21,6 @@ def setup_file(path: str):
 def add_pair_to_store(src: str, dst: str) -> None:
     pair = {"src": os.path.abspath(src), "dst": os.path.abspath(dst)}
     
-    setup_file(file_path)
-
     with open(file_path, "r+") as fjs:
         content = json.load(fjs)
         content["pairs"].append(pair)
@@ -31,8 +29,6 @@ def add_pair_to_store(src: str, dst: str) -> None:
 
 def find_changed() -> list[pair]:
     changed_pairs = []
-
-    setup_file(file_path)
 
     with open(file_path, "r+") as fjs:
         for pair in json.load(fjs)["pairs"]:
@@ -57,8 +53,6 @@ def refresh_pairs(pairs: list[pair]) -> None:
         refresh_pair(pair)
     
 def clear_file_pairs_file() -> None:
-    setup_file(file_path)
-
     content = json.load(open(file_path))
     content['pairs'] = []
     open(file_path, "w").write(json.dumps(content, indent=4))
@@ -104,9 +98,6 @@ def add_folders(f1: str, f2:str) -> None:
         add_pair_to_store(src, dst)
 
 def show_pairs() -> None:
-
-    setup_file(file_path)
-
     with open(file_path, "r") as fjs:
         print(fjs.read())
 

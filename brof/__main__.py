@@ -11,6 +11,7 @@ parser.add_argument("-show", "-s", dest="show", action="store_true", help="Show 
 parser.add_argument("-clear", "-c", dest="clear", action="store_true", help="Clear all the pairs from the current workspace")
 
 def main():
+    cf.setup_file(cf.file_path)
     args = parser.parse_args()
 
     if args.add:
