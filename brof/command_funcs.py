@@ -13,7 +13,6 @@ def setup_file(path: str):
     if os.path.isfile(path):
         return 
 
-    print(dir + "/brof_files/")
     os.mkdir(dir + "/brof_files/")
 
     with open(path, "w+") as f:
@@ -72,8 +71,6 @@ def remove_sub_folders(folder: str, crr_list: list[str]=[]) -> list[str]:
             crr_list = remove_sub_folders(os.path.join(folder, p), crr_list)
         elif os.path.isfile(os.path.join(folder, p)):
             crr_list.append(os.path.join(folder, p))
-        else:
-            print('lol')
     return crr_list
 
 def add_folders(f1: str, f2:str) -> None:
@@ -94,11 +91,6 @@ def add_folders(f1: str, f2:str) -> None:
     files1 = [relativize_file(file, f1) for file in content1]
     files2 = [relativize_file(file, f2) for file in content2]
 
-    print(content1)
-    print(content2)
-    print(files1)
-    print(files2)
-
     big = max(files1, files2, key=lambda x: len(x))
     for file in big:
         try:
@@ -108,7 +100,6 @@ def add_folders(f1: str, f2:str) -> None:
         try:
             dst = content2[files2.index(file)]
         except:
-            print("a")
             continue
         add_pair_to_store(src, dst)
 
@@ -135,7 +126,6 @@ def get_pairs() -> list[pair]:
         return content["pairs"]
 
 def has_pair(src: str, dst:str) -> bool:
-    print(get_pairs())
     for p in get_pairs():
         if p["src"] == os.path.abspath(src) and p["dst"] == os.path.abspath(dst):
             return True
