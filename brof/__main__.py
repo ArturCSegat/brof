@@ -54,8 +54,8 @@ def main():
                 cf.refresh_pairs(to_refresh)
                 break
     elif args.dir:
-        src = args.add[0]
-        dst = args.add[1]
+        src = args.dir[0]
+        dst = args.dir[1]
 
         if not os.path.exists(src) or not os.path.exists(dst):
             print("Both directories must exisit")
