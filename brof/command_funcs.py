@@ -72,18 +72,26 @@ def add_folders(f1: str, f2:str) -> None:
     content1 = remove_sub_folders(f1, a)
     b = []
     content2 = remove_sub_folders(f2, b)
+    print(f"content1: {content1}")
 
     def relativize_file(file: str, folder: str) -> str:
         arr = file.split("/")
+        if arr[0] == '.' :
+            arr.pop(0)
         for i, part in enumerate(arr):
             if part == folder:
                 for j in range(0, i+1):
-                    arr.pop(j)
-                    break
+                    arr.pop(0)
+                break
         return "/".join(arr)
 
-    files1 = [relativize_file(file, f1) for file in content1]
-    files2 = [relativize_file(file, f2) for file in content2]
+    files1 = [relativize_file(file, os.path.abspath(f1).split('/')[-1]) for file in content1]
+    files2 = [relativize_file(file, os.path.abspath(f2).split('/')[-1]) for file in content2]
+    print(os.path.abspath(f1).split('/')[-1])
+    print(f"files1: {files1}")
+    print(f"content2: {content2}")
+    print(os.path.abspath(f2).split('/')[-1])
+    print(f"files2: {files2}")
 
     big = max(files1, files2, key=lambda x: len(x))
     for file in big:

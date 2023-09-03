@@ -1,5 +1,5 @@
 import argparse
-import brof.command_funcs as cf
+import command_funcs as cf
 import os
 
 parser = argparse.ArgumentParser(description="CLI tool for keeping changes to a file updated in different locations")
